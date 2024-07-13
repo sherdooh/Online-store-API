@@ -1,19 +1,35 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "title": "Product 1",
-        "description": "Description of product 1",
-        "price": 29.99
-      },
-      {
-        "id": 2,
-        "title": "Product 2",
-        "description": "Description of product 2",
-        "price": 39.99
-      }
-    ],
-    "users": [],
-    "carts": []
-  }
-  
+  "products": [
+    {
+      "id": 1,
+      "title": "Product 1",
+      "description": "Description of product 1",
+      "price": 29.99
+    },
+    {
+      "id": 2,
+      "title": "Product 2",
+      "description": "Description of product 2",
+      "price": 39.99
+    }
+  ],
+  "users": [],
+  "carts": [
+    {
+      "productId": 1,
+      "quantity": 1
+    },
+    {
+      "productId": 2,
+      "quantity": 1
+    },
+    {
+      "productId": 1,
+      "quantity": 1
+    },
+    {
+      "productId": 1,
+      "quantity": 1
+    }
+  ]
+}
