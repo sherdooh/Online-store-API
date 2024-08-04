@@ -1,28 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { getCart } from '../api';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchCart = async () => {
-      const token = localStorage.getItem('token');
-      const cart = await getCart(token);
-      setCart(cart);
+      try {
+        const response = await axios.get('http://localhost:5000/api/cart');
+        setCart(response.data); // Set the cart to the fetched data
+      } catch (error) {
+        console.error("Error fetching cart:", error);
+      }
     };
+
     fetchCart();
   }, []);
 
   return (
-    <div className="cart">
-      <h2>Your Cart</h2>
-      {cart.map((item) => (
-        <div key={item.productId} className="cart-item">
-          <h4>{item.product.title}</h4>
-          <p>Quantity: {item.quantity}</p>
-          <p>Price: ${item.product.price}</p>
-        </div>
-      ))}
+    <div>
+      <h1>Shopping Cart</h1>
+      {cart.length > 0 ? (
+        cart.map(item => (
+          <div key={item.id}>
+            <p>{item.name} - Quantity: {item.quantity}</p>
+          </div>
+        ))
+      ) : (
+        <p>Your cart is empty.</p>
+      )}
     </div>
   );
 };
